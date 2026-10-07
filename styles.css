@@ -1,0 +1,514 @@
+/* =========================================================
+   REDIM Engenharia — styles.css
+   Paleta da marca: preto + verde do logo.
+   --blue = verde escuro (texto/links sobre fundo claro); --accent = verde do logo (detalhes e fundos escuros).
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap");
+
+:root {
+  --ink: #121212;
+  --blue: #3a7d1e;
+  --blue-soft: #e8f3e0;
+  --paper: #f4f5f2;
+  --white: #ffffff;
+  --line: #d9ddd4;
+  --muted: #5a5f57;
+  --accent: #7ac943;
+
+  --font-head: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+
+  --radius: 6px;
+  --header-h: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--white);
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  line-height: 1.1;
+  margin: 0 0 .6em;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 800; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 800; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+
+p { margin: 0 0 1em; max-width: 62ch; }
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(1160px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+
+.eyebrow {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-head);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--blue);
+}
+
+/* ---------- Botões e links ---------- */
+
+.btn {
+  display: inline-block;
+  padding: .95rem 1.7rem;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: 2px solid var(--ink);
+  transition: background .2s, color .2s;
+}
+.btn:hover { background: var(--blue); border-color: var(--blue); }
+
+.btn-small { padding: .6rem 1.1rem; font-size: .95rem; }
+
+.btn-light { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.btn-light:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
+
+.text-link {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+}
+.text-link:hover { color: var(--ink); }
+
+/* ---------- Header ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+.nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand img { height: 40px; width: auto; }
+
+.nav nav { display: flex; gap: 1.8rem; }
+
+.nav nav a {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+}
+.nav nav a:hover { color: var(--ink); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: clamp(3rem, 7vw, 6rem) 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.hero-copy h1 span { display: block; color: var(--blue); }
+
+.hero-copy > p { font-size: 1.2rem; color: var(--muted); }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.hero-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.hero-tags span {
+  padding: .3rem .8rem;
+  font-size: .9rem;
+  font-weight: 600;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+/* Cartão visual com malha de projeto */
+
+.visual-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 480px;
+  margin-left: auto;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--ink);
+}
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(18,18,18,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18,18,18,.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.brand-symbol {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.brand-symbol img { width: 46%; height: auto; }
+
+.visual-badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+.visual-badge span { font-size: .75rem; font-weight: 600; letter-spacing: .08em; color: var(--blue); }
+.visual-badge strong { font-family: var(--font-head); font-size: 1rem; }
+
+.visual-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.1rem 1.2rem;
+  background: var(--ink);
+  color: var(--white);
+  border-top: 3px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+}
+.visual-caption strong { font-family: var(--font-head); }
+.visual-caption span { font-size: .9rem; opacity: .8; }
+
+/* ---------- Faixa de serviços ---------- */
+
+.services-strip { background: var(--ink); color: var(--white); }
+
+.services-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.services-strip-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  padding: 1.6rem .5rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: .95rem;
+  line-height: 1.3;
+  border-left: 1px solid rgba(255,255,255,.12);
+  transition: background .2s;
+}
+.services-strip-grid a:last-child { border-right: 1px solid rgba(255,255,255,.12); }
+.services-strip-grid a:hover { background: var(--blue); }
+
+.service-icon { font-size: 1.7rem; line-height: 1; color: var(--accent); }
+
+/* ---------- Layout em duas colunas ---------- */
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.problem { background: var(--white); }
+.problem p { font-size: 1.15rem; color: var(--muted); }
+
+/* ---------- Serviços ---------- */
+
+.services { background: var(--paper); }
+
+.section-heading { max-width: 640px; margin-bottom: 3rem; }
+.section-heading p { color: var(--muted); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  padding: 1.8rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  border-radius: var(--radius);
+}
+.card > span {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--blue);
+}
+.card p { margin: 0; color: var(--muted); }
+
+/* ---------- BIM ---------- */
+
+.bim { background: var(--ink); color: var(--white); }
+
+.bim-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.bim-image-wrapper { position: relative; }
+
+.bim-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+/* Lupa: ajuste --zoom-x / --zoom-y para centralizar nas instalações */
+.bim-zoom {
+  --zoom-x: 70%;
+  --zoom-y: 60%;
+  position: absolute;
+  right: -1rem;
+  bottom: -1.5rem;
+  width: clamp(120px, 28%, 210px);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  background: var(--ink);
+}
+.bim-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--zoom-x) var(--zoom-y);
+  transform: scale(2.6);
+  transform-origin: var(--zoom-x) var(--zoom-y);
+}
+
+.zoom-label {
+  position: absolute;
+  right: .5rem;
+  bottom: -2.8rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--accent);
+}
+
+.bim .eyebrow { color: var(--accent); }
+.bim-content p { color: rgba(255,255,255,.8); }
+.bim .text-link { color: var(--white); }
+.bim .text-link:hover { color: var(--accent); }
+
+.disciplines { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0 2rem; }
+.disciplines span {
+  padding: .35rem .85rem;
+  font-size: .9rem;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px;
+}
+
+/* ---------- Portfólio ---------- */
+
+.portfolio { background: var(--white); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.project {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.project-image { aspect-ratio: 4 / 3; background: var(--blue-soft); overflow: hidden; }
+.project-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.project-info { padding: 1.2rem 1.4rem 1.4rem; }
+.project-info h3 { margin-bottom: .3rem; font-size: 1.1rem; }
+.project-info p { margin: 0; font-size: .95rem; color: var(--muted); }
+
+/* ---------- Empresa ---------- */
+
+.company { background: var(--paper); border-block: 1px solid var(--line); }
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+}
+.stats div { display: flex; flex-direction: column; }
+.stats strong {
+  font-family: var(--font-head);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--blue);
+}
+.stats span { font-size: .95rem; color: var(--muted); }
+
+/* ---------- Processo ---------- */
+
+.process { background: var(--white); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  counter-reset: step;
+}
+
+.steps > div {
+  position: relative;
+  padding-top: 1.4rem;
+  border-top: 3px solid var(--line);
+}
+.steps > div::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 40%;
+  height: 3px;
+  background: var(--blue);
+}
+.steps b {
+  display: block;
+  margin-bottom: .6rem;
+  font-family: var(--font-head);
+  color: var(--blue);
+}
+.steps p { margin: 0; color: var(--muted); }
+
+/* ---------- CTA ---------- */
+
+.cta { background: var(--ink); color: var(--white); }
+
+.cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.cta .eyebrow { color: var(--accent); }
+.cta h2 { max-width: 18ch; }
+.cta p { color: rgba(255,255,255,.88); margin: 0; }
+
+/* ---------- Rodapé ---------- */
+
+footer { padding: 2rem 0; background: var(--ink); color: rgba(255,255,255,.75); font-size: .95rem; }
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-brand {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: .12em;
+  color: var(--white);
+}
+
+footer a { text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.4); }
+footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 960px) {
+  .nav nav { display: none; }
+  .hero-grid, .two-col, .bim-grid { grid-template-columns: 1fr; }
+  .visual-card { margin-inline: auto; }
+  .services-strip-grid { grid-template-columns: repeat(3, 1fr); }
+  .services-strip-grid a:nth-child(3n + 1) { border-left: 0; }
+  .services-strip-grid a:nth-child(-n + 3) { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .cards, .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .bim-zoom { right: .5rem; }
+  .zoom-label { right: 1rem; }
+}
+
+@media (max-width: 600px) {
+  .brand img { height: 32px; }
+  .services-strip-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-strip-grid a:nth-child(odd) { border-left: 0; }
+  .services-strip-grid a:nth-child(-n + 4) { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .cards, .portfolio-grid, .steps { grid-template-columns: 1fr; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+  .cta .btn { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
